@@ -15,7 +15,7 @@ Provide tasks for common Docker workflows:
 
 1. Requires user to have Docker CLI tools installed.
    (See also: ["Implementation Approaches"](#implementation-approaches))
-1. User is free to use the Angular CLI without Docker (and vice versa). By default, do not generate Docker files upon creation of a new project (`ng new`, `ng init`).
+1. User is free to use the Angular CLI without Docker (and vice versa). By default, do not generate Docker files upon creation of a new project (`ng new`).
 1. Don't recreate the wheel. Docker CLI tools are very full featured on their own. Implement the common Docker use cases that make it convenient for Angular applications.
 1. Don't inhibit users from using the standalone Docker CLI tools for other use cases.
 1. Assumes 1:1 Dockerfile with the Angular project. Support for multiple services under the same project is outside the scope of this initial design.
@@ -97,7 +97,7 @@ If an `env` name is provided, other than "default", generate compose files with 
 
 If `--use-image == false` and the selected machine for the environment is a Docker Swarm machine, warn the user. Docker Swarm clusters cannot use the `build:` option in compose, since the resulting built image will not be distributed to other nodes. Swarm requires using the `image:` option in compose, pushing the image to a registry beforehand so that the Swarm nodes have a place to pull the image from (see [Swarm Limitations](https://docs.docker.com/compose/swarm/#building-images)).
 
-Certain configuration values will be stored in the project's ngConfig `angular-cli.json` for use with other docker commands (ie. deploy, logs, exec). See also: [Saved State](#saved-state) section.
+Certain configuration values will be stored in the project's ngConfig `.angular-cli.json` for use with other docker commands (ie. deploy, logs, exec). See also: [Saved State](#saved-state) section.
 
 Provide instructions on what the user can do after initialization completes (push, deploy).
 
@@ -290,7 +290,7 @@ Example ngConfig model for saved docker command state (per project):
         isImageDeploy: true,
         serviceName: 'ngapp'
       }
-    }    
+    }
   }
 }
 ```
@@ -436,19 +436,19 @@ The "2. Docker CLI tools via `child_process.exec`" method is recommended based o
 
 * [Docker Run](https://docs.docker.com/engine/reference/run/)
 * [Docker-Compose File](https://docs.docker.com/compose/compose-file/)
-* [Kubernetes Pod](http://kubernetes.io/docs/api-reference/v1/definitions/#_v1_pod)
+* [Kubernetes Pod](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/)
 * [Marathon App](https://mesosphere.github.io/marathon/docs/rest-api.html#post-v2-apps)
 * [Tutum Container](https://docs.tutum.co/v2/api/#container)
-* [AWS Elastic Beanstalk/ECS Task Definition](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
-* [Azure Service Fabric App](https://azure.microsoft.com/en-us/documentation/articles/service-fabric-deploy-remove-applications/)
-* [Heroku Docker CLI](https://github.com/heroku/heroku-docker)
+* [AWS Elastic Beanstalk/ECS Task Definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
+* [Azure Service Fabric App](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-deploy-remove-applications)
+* [Heroku Docker CLI](https://github.com/heroku/heroku-container-tools)
 * [Redspread](https://github.com/redspread/spread)
 * [Docker Universal Control Plane](https://www.docker.com/products/docker-universal-control-plane)
 * [Puppet Docker Module](https://github.com/garethr/garethr-docker)
 * [Chef Docker Cookbook](https://supermarket.chef.io/cookbooks/docker)
-* [Ansible Docker Module](http://docs.ansible.com/ansible/docker_module.html)
+* [Ansible Docker Module](https://docs.ansible.com/ansible/latest/modules/docker_module.html)
 * [Bamboo Docker Tasks](https://confluence.atlassian.com/bamboo/configuring-the-docker-task-in-bamboo-720411254.html)
-* [Freight Forwarder Manifest](http://freight-forwarder.readthedocs.org/en/latest/config/overview.html)
+* [Freight Forwarder Manifest](http://freight-forwarder.readthedocs.io/en/latest/config/overview.html)
 * [Gulp Docker Tasks](https://www.npmjs.com/package/gulp-docker)
 * [Grunt Dock Tasks](https://www.npmjs.com/package/grunt-dock)
-* [Robo Docker Tasks](http://robo.li/tasks/Docker/)
+* [Robo Docker Tasks](https://robo.li/tasks/Docker/)
